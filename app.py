@@ -1,3 +1,4 @@
+import streamlit as st
 counter = 0
 
 def main():
