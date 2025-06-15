@@ -1,22 +1,14 @@
 import streamlit as st
-
-counter = 0
+from chatbot import get_response
 
 def main():
-    global counter
-    st.title("Chatbot")
-    st.write("Welcome to the chatbot. Please type a message and press Enter to start the conversation.")
+    st.title("🧠 Simple NLP Chatbot")
 
-    counter += 1
-    user_input = st.text_input("You:", key=f"user_input_{counter}")
+    user_input = st.text_input("You:", "")
 
     if user_input:
-        response = chatbot(user_input)
-        st.text_area("Chatbot:", value=response, height=100, max_chars=None, key=f"chatbot_response_{counter}")
+        response = get_response(user_input)
+        st.text_area("Bot:", value=response, height=100)
 
-        if response.lower() in ['goodbye', 'bye']:
-            st.write("Thank you for chatting with me. Have a great day!")
-            st.stop()
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
